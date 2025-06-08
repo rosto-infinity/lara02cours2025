@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+
+    </head>
+    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+       <div class="text-center text-green-600 dark:text-green-400 mb-6">
+            <h1 class="text-5xl font-bold">Laravel 12 CRUD Create, Read, Update and Delete with Tailwind CSS V4</h1>
+      </div>
+
+       <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="my-5">
+                    <div class="container mx-auto">
+
+
+                        <div class="flex justify-between items-center bg-gray-200 p-5 rounded-md">
+                            <div>
+                                <h1 class="text-xl text-semibold">Products (total)</h1>
+                            </div>
+                            <div>
+                                <a href="create.html" class="px-5 py-2 bg-blue-500 rounded-md text-white text-lg shadow-md">Add
+                                    New</a>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                                    <div class="overflow-hidden">
+                                        <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                                            <thead class="bg-gray-100 dark:bg-gray-700">
+                                                <tr>
+                                                    <th scope="col"
+                                                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                        #
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                        Name
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                        Category
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                        Price
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                        Edit
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                                                        Delete
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody
+                                                class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+
+
+                                                <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                                    <td
+                                                        class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                                        id
+
+                                                    </td>
+                                                    <td
+                                                        class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        product->title
+                                                    </td>
+                                                    <td
+                                                        class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        product->category
+                                                    </td>
+                                                    <td
+                                                        class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        product->price
+                                                    </td>
+                                                    <td
+                                                        class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <a href="#"
+                                                            class="px-5 py-2 bg-blue-500 rounded-md text-white text-lg shadow-md">Edit</a>
+                                                    </td>
+                                                    <td
+                                                        class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                                        <a href="#"
+                                                            class="px-5 py-2 bg-red-500 rounded-md text-white text-lg shadow-md">Delete</a>
+                                                    </td>
+                                                </tr>
+                                                --------
+                                                <tr>
+                                                    <td>
+                                                        <h2>Product Not found</h2>
+                                                    </td>
+                                                </tr>
+                                                ------------
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>

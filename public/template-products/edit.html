@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Laravel</title>
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+
+    </head>
+    <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18] flex p-6 lg:p-8 items-center lg:justify-center min-h-screen flex-col">
+       <div class="text-center text-green-600 dark:text-green-400 mb-6">
+            <h1 class="text-5xl font-bold">Laravel 12 CRUD Create, Read, Update and Delete with Tailwind CSS V4</h1>
+      </div>
+
+       <div class="my-5">
+    <div class="container mx-auto max-w-xl shadow py-4 px-10">
+        <a href="index.html" class="px-5 py-2 bg-red-500 rounded-md text-white text-lg shadow-md">Go Back</a>
+        <div class="my-3">
+            <h1 class="text-center text-3xl font-bold">Create Product</h1>
+            <form action="" method="POST">
+               
+                <div class="my-2">
+                    <label for="" class="text-md font-bold">Product Name</label>
+                    <input type="text" value="" name="title" class="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-md rounded-md my-2" id="">
+                   
+                </div>
+                <div class="my-2 ">
+                    <label for="" class="text-md font-bold">Category</label>
+                    <input type="text" value="" name="category" class="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-md rounded-md my-2" id="">
+                   
+                </div>
+                <div class="my-2 ">
+                    <label for="" class="text-md font-bold">Enter your Price</label>
+                    <input type="text" value="" name="price" class="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-md rounded-md my-2" id="">
+                   
+                </div>
+
+                <button class="px-5 py-1 bg-emerald-500 rounded-md text-black text-lg shadow-md">Create</button>
+            </form>
+        </div>
+    </div>
+       </div>
+
+    </body>
+</html>
