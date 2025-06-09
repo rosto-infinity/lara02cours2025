@@ -22,11 +22,10 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('products
 Route::get('/products/edit/{id}', [ProductController::class, 'edit'])->name('products.edit');
 
 // Mettre à jour un produit
-Route::patch('/products/{id}', [ProductController::class, 'update'])->name('products.update');
+Route::patch('/products/update/{id}', [ProductController::class, 'update'])->name('products.update');
 
 // Supprimer un produit
-Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
-
+Route::delete('/products/delete/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
 //  les routes classiques pour un CRUD complet avec ProductController :
-  // Route::resource('products', ProductController::class);
+// Route::resource('products', ProductController::class);

@@ -15,21 +15,24 @@
                 @csrf
                 <div class="my-2 ">
                     <label for="" class="text-md font-bold">Product Name</label>
-                    <input type="text" name="title" class="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-md rounded-md my-2" id="">
+                    <input type="text" value="{{ old('title') }}" 
+                    name="title" class="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-md rounded-md my-2" id="">
                     @error('title')
                     <span class="text-red-500">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="my-2 ">
-                    <label for="" class="text-md font-bold">Category</label>
-                    <input type="text" name="category" class="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-md rounded-md my-2" id="">
+                    <label for=""  class="text-md font-bold">Category</label>
+                    <input type="text" value="{{ old('category') }}"
+                    name="category" class="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-md rounded-md my-2" id="">
                     @error('category')
                     <span class="text-red-500">{{$message}}</span>
                     @enderror
                 </div>
                 <div class="my-2 ">
                     <label for="" class="text-md font-bold">Price</label>
-                    <input type="text" name="price" class="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-md rounded-md my-2" id="">
+                    <input type="text"  value="{{ old('price') }}"
+                    name="price" class="block w-full border border-emerald-500 outline-emerald-800 px-2 py-2 text-md rounded-md my-2" id="">
                     @error('price')
                     <span class="text-red-500">{{$message}}</span>
                     @enderror

@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers\Crud;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
     public function index()
     {
-    //    $products = Product::orderBy('id', 'desc')->get();
-       $products = Product::paginate(2);
+        //    $products = Product::orderBy('id', 'desc')->get();
+        $products = Product::orderBy('id', 'desc')->paginate(7);
 
         $total = Product::count();
 
-      
         return view('pages.products-index', compact('products', 'total'));
     }
 
@@ -26,17 +25,13 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $validation = $request->validate(['title' => 'required', 'category' => 'required', 'price' => 'required']);
-        $data = Product::create($validation);
-        if ($data) {
-            session()->flash('success', 'Product Add Successfully');
-
-            return redirect(route('products.index'));
-        } else {
-            session()->flash('error', 'Some problem occure');
-
-            return redirect(route('products.create'));
-        }
+        $validation = $request->validate(
+            [
+                'title' => 'required',
+                'category' => 'required',
+                'price' => 'required|numeric']);
+        Product::create($validation);
+        return redirect()->route('products.index')->with('success', 'Product added successfully');
     }
 
     public function edit($id)
@@ -46,38 +41,35 @@ class ProductController extends Controller
         return view('pages.products-update', compact('products'));
     }
 
-    public function delete($id)
-    {
-        $products = Product::findOrFail($id)->delete();
-        if ($products) {
-            session()->flash('success', 'Product Deleted Successfully');
 
-            return redirect(route('products.index'));
-        } else {
-            session()->flash('error', 'Product Not Delete successfully');
+  public function update(Request $request, $id)
+{
+    // Validation des données
+    $validation = $request->validate([
+        'title' => 'required',
+        'category' => 'required',
+        'price' => 'required|numeric', // Ajoutez 'numeric' pour valider que le prix est un nombre
+    ]);
 
-            return redirect(route('products.index'));
-        }
-    }
+    // Récupération du produit par ID
+    $product = Product::findOrFail($id);
 
-    public function update(Request $request, $id)
-    {
+    // Mise à jour des attributs
+    $product->title = $validation['title'];
+    $product->category = $validation['category'];
+    $product->price = $validation['price'];
+
+    // Sauvegarde des changements
+    $product->save();
+
+    // Redirection avec message de succès
+    return redirect()->route('products.index')->with('success', 'Product updated successfully');
+}
+        public function destroy($id)
+        {
         $products = Product::findOrFail($id);
-        $title = $request->title;
-        $category = $request->category;
-        $price = $request->price;
-        $products->title = $title;
-        $products->category = $category;
-        $products->price = $price;
-        $data = $products->save();
-        if ($data) {
-            session()->flash('success', 'Product Update Successfully');
-
-            return redirect(route('products.index'));
-        } else {
-            session()->flash('error', 'Some problem occure');
-
-            return redirect(route('products.update'));
-        }
+        $products->delete();
+        return redirect()->route('products.index')->with('error', 'Product Deleted Successfully');
     }
+
 }

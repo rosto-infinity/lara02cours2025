@@ -4,8 +4,14 @@
    <div class="my-5">
     <div class="container mx-auto">
         @if (session()->has('success'))
-        <div class="bg-green-500 text-black px-4 py-2">
-            {{session('success')}}
+        <div class="bg-green-200 text-green-800 px-4 py-2">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        @if (session()->has('error'))
+        <div class="bg-red-200 text-red-800 px-4 py-2">
+            {{ session('error') }}
         </div>
         @endif
         <div class="flex justify-between items-center bg-gray-200 p-5 rounded-md mt-2.5">
@@ -61,7 +67,14 @@
                                         <a href="{{ route('products.edit', ['id'=>$product->id]) }}" class="px-5 py-2 bg-blue-500 rounded-md text-white text-lg shadow-md">Edit</a>
                                     </td>
                                     <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                        <a href="{{ route('products.destroy', ['id'=>$product->id]) }}" class="px-5 py-2 bg-red-500 rounded-md text-white text-lg shadow-md">Delete</a>
+                                        <form action="{{ route('products.destroy', ['id'=>$product->id]) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="px-5 py-2 bg-red-500 rounded-md text-white text-lg shadow-md"
+                                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">
+                                                Delete
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @empty
