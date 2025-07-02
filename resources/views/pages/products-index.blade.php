@@ -16,8 +16,10 @@
         @endif
         <div class="flex justify-between items-center bg-gray-200 p-5 rounded-md mt-2.5">
             <div>
-                <h1 class="text-xl text-semibold">Products ( {{$total}} )</h1>
+                <span class="text-xl text-semibold">Products ( {{$total}} )</span>
             </div>
+            <a class="px-5 py-2 bg-blue-500 rounded-md text-white text-lg shadow-md"
+             href="{{ route('excel') }}">Export/Excel</a>
             <div>
                 <a href="{{ route('dbbackup') }}" class="px-5 py-2 bg-green-500 rounded-md text-white text-lg shadow-md">Database Backup</a>
             </div>

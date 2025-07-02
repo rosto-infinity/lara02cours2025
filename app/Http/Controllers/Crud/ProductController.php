@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Crud;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Exports\ProductsExport;
+use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ProductController extends Controller
 {
@@ -96,5 +99,12 @@ private function formatCount($number)
         $products->delete();
         return redirect()->route('products.index')->with('error', 'Product Deleted Successfully');
     }
+
+    public function excel() 
+{
+    $fileName = now()->format('Y-m-d_H-i-s');
+    return Excel::download(new ProductsExport, 'Products_' .$fileName . '.xlsx');
+}
+
 
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Crud\ProductController;
 //     return view('welcome');
 // });
 
+Route::get('/excel', [ProductController::class, 'excel'])->name('excel');
 Route::get('/', [ProductController::class, 'index'])->name('products.index');
 
 // Afficher le formulaire de création
