@@ -11,13 +11,37 @@ class ProductController extends Controller
     public function index()
     {
         //    $products = Product::orderBy('id', 'desc')->get();
-        $products = Product::orderBy('id', 'desc')->paginate(7);
+        $products = Product::orderBy('id', 'desc')->paginate(70);
 
-        $total = Product::count();
+          // Formater le total avec notation "k"
+    $total = $this->formatCount(Product::count());
 
         return view('pages.products-index', compact('products', 'total'));
     }
-
+/**
+ * Formate les grands nombres avec notation "k"
+ */
+private function formatCount($number)
+{
+    if ($number >= 1000000) {
+        return round($number / 1000000, 1) . 'M'; // Pour les millions
+    }
+    
+    if ($number >= 1000) {
+        // Logique pour déterminer la précision
+        $divided = $number / 1000;
+        
+        // Si c'est un nombre rond (ex: 2000 → 2k)
+        if ($number % 1000 === 0) {
+            return $divided . 'k';
+        }
+        
+        // Sinon on garde 1 décimale max (ex: 2250 → 2.25k)
+        return number_format($divided, ($divided < 10) ? 2 : 1, '.', '') . 'k';
+    }
+    
+    return $number; // Retourne tel quel si < 1000
+}
     public function create()
     {
         return view('pages.products-create');
@@ -29,7 +53,8 @@ class ProductController extends Controller
             [
                 'title' => 'required',
                 'category' => 'required',
-                'price' => 'required|numeric']);
+                'price' => 'required|numeric']
+            );
         Product::create($validation);
         return redirect()->route('products.index')->with('success', 'Product added successfully');
     }

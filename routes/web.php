@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Crud\ProductController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DBBackupController;
+use App\Http\Controllers\Crud\ProductController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -29,3 +30,22 @@ Route::delete('/products/delete/{id}', [ProductController::class, 'destroy'])->n
 
 //  les routes classiques pour un CRUD complet avec ProductController :
 // Route::resource('products', ProductController::class);
+
+Route::get('/dbbackup', [DBBackupController::class, 'index'])
+    ->name('dbbackup');
+
+Route::get('/dbbackup/download', [DBBackupController::class, 'download'])
+    ->name('dbbackup.download');
+
+Route::post('/dbbackup/create', [DBBackupController::class, 'create'])
+    ->name('dbbackup.create');
+
+// Ajouter ces nouvelles routes
+Route::post('/dbbackup/import', [DBBackupController::class, 'import'])
+    ->name('dbbackup.import');
+
+Route::delete('/dbbackup/delete', [DBBackupController::class, 'delete'])
+    ->name('dbbackup.delete');
+Route::post('/dbbackup/restore', [DBBackupController::class, 'restore'])
+    ->name('dbbackup.restore');
+

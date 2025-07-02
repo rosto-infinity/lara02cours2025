@@ -19,6 +19,9 @@
                 <h1 class="text-xl text-semibold">Products ( {{$total}} )</h1>
             </div>
             <div>
+                <a href="{{ route('dbbackup') }}" class="px-5 py-2 bg-green-500 rounded-md text-white text-lg shadow-md">Database Backup</a>
+            </div>
+            <div>
                 <a href="{{ route('products.create') }}" class="px-5 py-2 bg-blue-500 rounded-md text-white text-lg shadow-md">Add New</a>
             </div>
         </div>
