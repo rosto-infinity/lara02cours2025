@@ -75,6 +75,6 @@ php artisan test
 ```
 
 ## Auteur
-- Projet pédagogique Laravel CRUD + Backup 2025
+-  Prof Waffo lele Rostand
 
 ---
