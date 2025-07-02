@@ -11,7 +11,7 @@ class ProductController extends Controller
     public function index()
     {
         //    $products = Product::orderBy('id', 'desc')->get();
-        $products = Product::orderBy('id', 'desc')->paginate(70);
+        $products = Product::orderBy('id', 'desc')->paginate(5);
 
           // Formater le total avec notation "k"
     $total = $this->formatCount(Product::count());
